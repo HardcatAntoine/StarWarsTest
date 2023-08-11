@@ -1,4 +1,4 @@
-package com.example.starwarstest.api
+package com.example.starwarstest.Models.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

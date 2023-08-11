@@ -1,6 +1,6 @@
-package com.example.starwarstest.data.starships
+package com.example.starwarstest.Models.data.starships
 
-data class Result(
+data class Starships(
     val MGLT: String,
     val cargo_capacity: String,
     val consumables: String,

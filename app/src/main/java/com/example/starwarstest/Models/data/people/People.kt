@@ -1,6 +1,6 @@
-package com.example.starwarstest.data.people
+package com.example.starwarstest.Models.data.people
 
-data class Result(
+data class People(
     val birth_year: String,
     val created: String,
     val edited: String,

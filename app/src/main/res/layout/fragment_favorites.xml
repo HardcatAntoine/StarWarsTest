@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/resource_default"
-    android:backgroundTint="#4FF7F7F8"
+    android:background="@drawable/background"
     android:backgroundTintMode="add"
-    tools:context=".FavoritesFragment.FavoritesFragment">
+    tools:context=".View.FavoritesFragment.FavoritesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavorites"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp" />
 </FrameLayout>
