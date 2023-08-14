@@ -28,7 +28,7 @@ class SearchFragment : Fragment() {
         SearchViewModelFactory((requireActivity().application as FavoriteApplication).repository)
     }
 
-    private val itemClickListener = object : ItemActionListener {
+    private val itemClickListener = object : AddItemActionListener {
         override fun onAddFavoritePeopleClick(position: Int, item: People) {
             Toast.makeText(
                 requireContext(),

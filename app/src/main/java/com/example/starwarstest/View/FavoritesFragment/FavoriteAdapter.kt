@@ -10,10 +10,16 @@ import com.example.starwarstest.Models.data.people.PeopleViewHolder
 import com.example.starwarstest.Models.data.planet.PlanetViewHolder
 import com.example.starwarstest.Models.data.starships.StarshipsViewHolder
 import com.example.starwarstest.R
+import com.example.starwarstest.View.SearchFragment.AddItemActionListener
 
 class FavoriteAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list = listOf<Any>()
+    var clickListener: DeleteItemActionListener? = null
+
+    fun setOnItemClickListener(clickListener: DeleteItemActionListener) {
+        this.clickListener = clickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -55,9 +61,23 @@ class FavoriteAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = list[position]
         when {
-            item is FavoritesPeople && holder is PeopleViewHolder -> holder.favoriteBind(item)
-            item is FavoritesStarships && holder is StarshipsViewHolder -> holder.favoriteBind(item)
-            item is FavoritesPlanets && holder is PlanetViewHolder -> holder.favoriteBind(item)
+            item is FavoritesPeople && holder is PeopleViewHolder -> holder.favoriteBind(
+                item,
+                position,
+                clickListener
+            )
+
+            item is FavoritesStarships && holder is StarshipsViewHolder -> holder.favoriteBind(
+                item,
+                position,
+                clickListener
+            )
+
+            item is FavoritesPlanets && holder is PlanetViewHolder -> holder.favoriteBind(
+                item,
+                position,
+                clickListener
+            )
         }
 
 

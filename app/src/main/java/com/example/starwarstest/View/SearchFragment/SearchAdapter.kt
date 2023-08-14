@@ -14,9 +14,9 @@ import com.example.starwarstest.Models.data.starships.StarshipsViewHolder
 
 open class SearchAdapter<T> : Adapter<RecyclerView.ViewHolder>() {
     private var list = listOf<Any>()
-    var clickListener: ItemActionListener? = null
+    var clickListener: AddItemActionListener? = null
 
-    open fun setOnItemClickListener(clickListener: ItemActionListener) {
+    open fun setOnItemClickListener(clickListener: AddItemActionListener) {
         this.clickListener = clickListener
     }
 
@@ -60,7 +60,7 @@ open class SearchAdapter<T> : Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = list[position]
         when {
-            item is People && holder is PeopleViewHolder -> holder.bind(item, position, clickListener)
+            item is People && holder is PeopleViewHolder -> holder.bind(item, position,clickListener)
             item is Starships && holder is StarshipsViewHolder -> holder.bind(item, position,clickListener)
             item is Planet && holder is PlanetViewHolder -> holder.bind(item, position,clickListener)
         }

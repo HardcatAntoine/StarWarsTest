@@ -5,7 +5,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.starwarstest.Models.data.FavoritesPlanets
 import com.example.starwarstest.R
-import com.example.starwarstest.View.SearchFragment.ItemActionListener
+import com.example.starwarstest.View.FavoritesFragment.DeleteItemActionListener
+import com.example.starwarstest.View.SearchFragment.AddItemActionListener
 import com.google.android.material.chip.Chip
 
 class PlanetViewHolder(itemView: View) :
@@ -15,7 +16,7 @@ class PlanetViewHolder(itemView: View) :
     private val population = itemView.findViewById<TextView>(R.id.tvPopulation)
     private val chip = itemView.findViewById<Chip>(R.id.chipFavorite)
 
-    fun bind(item: Planet, position: Int, clickListener: ItemActionListener?) {
+    fun bind(item: Planet, position: Int, clickListener: AddItemActionListener?) {
         name.text = item.name
         diameter.text = item.diameter
         population.text = item.population
@@ -24,10 +25,17 @@ class PlanetViewHolder(itemView: View) :
         }
     }
 
-    fun favoriteBind(item: FavoritesPlanets) {
+    fun favoriteBind(
+        item: FavoritesPlanets,
+        position: Int,
+        clickListener: DeleteItemActionListener?
+    ) {
         name.text = item.name
         diameter.text = item.diameter
         population.text = item.population
         chip.isChecked = true
+        chip.setOnClickListener {
+            clickListener?.onDeleteFavoritePlanetClick(position, item)
+        }
     }
 }

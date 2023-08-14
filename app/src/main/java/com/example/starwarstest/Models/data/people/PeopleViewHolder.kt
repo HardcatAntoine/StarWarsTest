@@ -5,7 +5,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.starwarstest.Models.data.FavoritesPeople
 import com.example.starwarstest.R
-import com.example.starwarstest.View.SearchFragment.ItemActionListener
+import com.example.starwarstest.View.FavoritesFragment.DeleteItemActionListener
+import com.example.starwarstest.View.SearchFragment.AddItemActionListener
 import com.google.android.material.chip.Chip
 
 class PeopleViewHolder(itemView: View) :
@@ -16,7 +17,11 @@ class PeopleViewHolder(itemView: View) :
     private val chip = itemView.findViewById<Chip>(R.id.chipFavorite)
 
 
-    fun bind(item: People, position: Int, clickListener: ItemActionListener?) {
+    fun bind(
+        item: People,
+        position: Int,
+        clickListener: AddItemActionListener?
+    ) {
         name.text = item.name
         gender.text = item.gender
         starships.text = item.starships.size.toString()
@@ -25,10 +30,17 @@ class PeopleViewHolder(itemView: View) :
         }
     }
 
-    fun favoriteBind(item: FavoritesPeople) {
+    fun favoriteBind(
+        item: FavoritesPeople,
+        position: Int,
+        clickListener: DeleteItemActionListener?
+    ) {
         name.text = item.name
         gender.text = item.gender
         starships.text = item.starships.toString()
         chip.isChecked = true
+        chip.setOnClickListener {
+            clickListener?.onDeleteFavoritePeopleClick(position, item)
+        }
     }
 }
